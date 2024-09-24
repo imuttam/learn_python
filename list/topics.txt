@@ -1,0 +1,112 @@
+
+Changing, Adding, and Removing Elements
+
+motorcycles = ['honda', 'yamaha', 'suzuki']
+print(motorcycles)
+['honda', 'yamaha', 'suzuki']
+
+motorcycles[0] = 'ducati'
+print(motorcycles)
+['ducati', 'yamaha', 'suzuki']
+
+Appending Elements to the End of a List
+
+Inserting Elements into a List
+motorcycles = ['honda', 'yamaha', 'suzuki']
+motorcycles.insert(0, 'ducati')
+print(motorcycles)
+
+['ducati', 'honda', 'yamaha', 'suzuki']
+
+Removing an Item Using the del Statement
+motorcycles = ['honda', 'yamaha', 'suzuki']
+del motorcycles[0]
+
+['yamaha', 'suzuki']
+
+Removing an Item Using the pop() Method
+The pop() method removes the last item in a list, but it lets you work
+with that item after removing it.
+
+motorcycles = ['honda', 'yamaha', 'suzuki']
+print(motorcycles)
+popped_motorcycle = motorcycles.pop()
+print(motorcycles)
+print(popped_motorcycle)
+
+Popping Items from any Position in a List
+You can actually use pop() to remove an item in a list at any position by
+including the index of the item you want to remove in parentheses.
+motorcycles = ['honda', 'yamaha', 'suzuki']
+u first_owned = motorcycles.pop(0)
+
+Removing an Item by Value
+motorcycles = ['honda', 'yamaha', 'suzuki', 'ducati']
+print(motorcycles)
+u motorcycles.remove('ducati')
+print(motorcycles)
+
+Sorting a List Permanently with the sort() Method
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+cars.sort()
+print(cars)
+['audi', 'bmw', 'subaru', 'toyota']
+
+cars.sort(reverse=True)
+print(cars)
+['toyota', 'subaru', 'bmw', 'audi']
+
+Sorting a List Temporarily with the sorted() Function
+
+print("Here is the original list:")
+print(cars)
+print("\nHere is the sorted list:")
+print(sorted(cars))
+
+Printing a List in Reverse Order
+cars.reverse()
+print(cars)
+
+Using range() to Make a List of Numbers
+numbers = list(range(1,6))
+
+Nested Lists
+
+asia = [["India", "Japan", "Korea"], ["Srilanka", "Myanmar", "Thailand"], ["Cambodia", "Vietnam", "Israel"]]
+
+The del Statement
+a = [5, -8, 99.99, 432, 108, 213]
+del a[0]
+
+The methods for a list are:
+
+append
+count
+extend
+insert
+pop
+remove
+reverse
+sort
+
+• Lists are a basic and useful data structure built into the Python language.
+• Built-in functions include len(), which returns the length of the list; max(),
+    which returns the maximum element in the list; min(), which returns the minimum
+    element in the list and sum(), which returns the sum of all the elements
+    in the list.
+• An individual elements in the list can be accessed using the index operator [].
+• Lists are mutable sequences which can be used to add, delete, sort and even reverse
+    list elements.
+• The sort() method is used to sort items in the list.
+• The split() method can be used to split a string into a list.
+• Nested list means a list within another list.
+
+Question1:Write a program that creates a list of 10 random integers. Then create two lists by
+name odd_list and even_list that have all odd and even values of the list respectively
+
+Question2:Write a program to sort the elements in ascending order using selection sort.
+Question3:Write a program that prints the maximum value of the second half of the list.
+Question4:Write a program that creates a list of numbers 1–100 that are either divisible by
+5 or 6.
+
+Question5:Ask the user to enter three points and find whether they are collinear.

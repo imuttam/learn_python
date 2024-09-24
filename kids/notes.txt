@@ -1,0 +1,157 @@
+what you can do with Python-----
+
+1.  Your Shell can do Math
+            (235 * 542) / (564 + 123)
+
+2.  Print with Python
+    print('Hello there!')
+
+    You need to start and close parenthesis right after “print” and type your
+    message within quotes. It could either be a single (‘message’) or a double
+    quoted (“message”).
+
+    But be careful here. The “p” in “print” should be a lowercase p. If you
+    use an uppercase p, you will get an error message.
+
+3>
+
+    IDLE script mode
+    Go to File ➤ New File
+    Go to File ➤ Save As (Figure 3-12) and save the document with the .py extension. .py denotes that a particular file has Python code in it and
+    needs to be executed as such.
+
+4>  There you go! You have written your very first Python program.
+    Whoohoo! 😊
+    Let us run it, shall we?
+    Go to Run ➤ Run Module
+
+5>  Python activity: Print your name
+    Open a new file and save it as introduction.py. You know how to do that, don’t you?
+    Now, follow along with me. Type the following into the file:
+
+    print('Hello there!')
+    print('My name is Susan Smith.')
+    print('I am 9 years old.')
+    print('I love puppies! :)')
+
+6>  Store your numbers
+
+    You can create containers of information called variables that store the values you want in them. You
+    can create unlimited number of containers like that! :O
+    So, how do you create these variables?
+
+        Take a look at your kitchen cabinet. You must see a container for every
+    spice your parents use to cook and even for common cooking ingredients
+    like salt, pepper, and sugar. Your mom probably labeled them as such, am
+    I right?
+    The container labeled salt has salt, or she probably has a code word for
+    it that she understands.
+    Similarly, you’ll be labeling your variables as well. There are certain
+    rules to label them, but other than that, you have free reign to label your
+    variables in any way you want, so have fun with it. Just make sure that you
+    would understand your labels when you read them later. You would need
+    to know what’s inside your container, won’t you?
+    It’s as simple as that to create variables. Decide on a label/name and
+    just type it in your Shell or script, and you’ve created your variable.
+
+    num1 = 3
+    num2 = 5
+    print(num1)
+    print(num2)
+    print(num1+num2)
+
+
+    I’ll just list them so you can refer to them later:
+1. A variable should start with letters or underscore (_)
+    and nothing else (no numbers or special characters
+    like !, #, $, %, etc.).
+
+2. A variable can only contain letters, numbers, and an
+    underscore (_).
+
+3. Variables are case sensitive. “num1” is different from
+    “Num1”
+
+    num1 = 3
+    Num1 = 7
+    print(num1)
+    print(Num1)
+
+
+Comments
+        What do “comments” mean in English? You comment on something?
+        Describe something? Something along those lines, am I right?
+        Similarly, you can write comments on your Python code to describe
+        them. You can write them on, before or after your lines of code. These
+        comments are just for your reference, and Python will neither read nor
+        execute them.
+        Whenever you add a “#” (hash symbol) before you type anything, that
+        particular line becomes a client. The minute you start a new line though,
+        you’re back to your regular coding. So, your “#” creates exactly one line of
+        comment.
+#This is a comment
+
+'''
+    This
+    is
+    a
+    multi-line
+    comment
+'''
+(or)
+"""
+    This
+    is
+    a
+    multi-line
+    comment
+"""
+
+Basic Math operations
+
+num1 = 5
+num2 = 7
+add = num1 + num2
+print(add)
+
+num1 = 55.876
+num2 = 100.54
+#Add num1 and num2
+add = num1 + num2
+num3 = 1235.583
+#Add the value in num3 to the current value in add
+add = add + num3
+print(add)
+
+Special Math operations in Python
+
+So, instead of typing 2 * 2 * 2 * 2, which means 2 to the power of 4 (2
+multiplied by itself four times), you can just type 2 ** 4 and you’d get the
+same result. If you had to multiply 2 by itself 20 times, just type 2 ** 20.
+You’d have saved a lot of time and space with this operator.
+Let’s look at some examples.
+    exp = 2 ** 4
+    print(exp)
+    exp = 2 ** 20
+    print(exp)
+    exp = 5.5 ** 3
+    print(exp)
+    exp = 5.5 ** 3.5
+    print(exp)
+
+#Division
+    div = 5 / 2
+    print(div)
+    #Remainder
+    r = 5 % 2
+    print(r)
+
+vision as your first result and the remainder of 5 / 2 as your second result.
+But what if you just need the quotient and not the complete result with
+the decimal point? You have an option for that as well!
+It’s called the floor division operator. Write it with two forward slashes,
+like this: “//”.
+It’ll divide your numbers and return just the whole number, leaving out
+the decimal point. Let’s try the same with simple and complex examples.
+floor = 5 // 2
+print(floor)

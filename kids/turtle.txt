@@ -1,0 +1,6 @@
+import turtle
+s = turtle.getscreen()
+t = turtle.Turtle()
+t.forward(100)
+t.home()
+t.backward(100)
