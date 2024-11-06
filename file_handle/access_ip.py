@@ -16,4 +16,5 @@ with open('./access.log') as file:
 # for ip in unique_ips:
 #     print(ip)
 
-print(len(ip_pattern))
+print(len(unique_ips))
+# print(list(unique_ips))
