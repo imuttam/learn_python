@@ -1,0 +1,65 @@
+# Command Prompt (cmd) Commands
+
+## Navigation Commands
+cd C:\path\to\directory      # Change Directory
+dir                          # List files and directories
+cd..                         # Move up one directory level
+cd\                          # Move to the root directory
+
+## File and Directory Management
+copy source destination      # Copy files from one location to another
+move source destination      # Move files from one location to another
+del filename                 # Delete one or more files
+mkdir directoryname          # Create a new directory
+rmdir directoryname          # Delete a directory
+
+## System Information and Management
+systeminfo                   # Display detailed system information
+tasklist                     # List all running processes
+taskkill /IM processname /F  # End a running process
+shutdown /s /f /t 0          # Shut down the computer
+ipconfig                     # Display network configuration
+ping hostname                # Test the connection to a network host
+
+## Network Commands
+netstat                      # Display network connections, routing tables, and interface statistics
+tracert hostname             # Trace the path taken to reach a network host
+nslookup hostname            # Query the DNS to find IP addresses of a hostname
+
+## Disk Management
+chkdsk /f C:                 # Check the file system and file system metadata
+diskpart                     # Open the Disk Partitioning utility
+
+## File Content Manipulation
+type filename.txt            # Display the contents of a text file
+more filename.txt            # Display the contents of a text file one page at a time
+find "searchstring" filename.txt # Search for a text string in a file
+
+## Miscellaneous
+cls                          # Clear the Command Prompt screen
+echo Hello, World!           # Display a line of text
+title My Command Prompt      # Set the title for the Command Prompt window
+exit                         # Close the Command Prompt
+
+# Additional Information on SQL Joins
+
+## Inner Join
+**Purpose**: Selects records that have matching values in both tables.
+**Syntax**:
+```sql
+SELECT columns
+FROM table1
+INNER JOIN table2
+ON table1.column = table2.column;
+
+
+Summary of Behavior:
+INNER JOIN: Intersection (only matching rows based on the condition).
+
+LEFT JOIN: All rows from  A, with matched rows from 𝐵B; unmatched rows in 𝐵 B are filled with NULL.
+
+Set A and Set B Analogy:
+𝐴∩𝐵
+A∩B: INNER JOIN
+𝐴+(𝐴−𝐵)
+A+(A−B): LEFT JOIN

@@ -1,12 +1,16 @@
-# n = int(input("Enter the number of terms: "))
-# a, b = 0, 1
-# count = 0
-# while count < n:
-    # print(a)
-    # a, b = b, a + b
-    # count += 1
+
 a,b = 0,1
 for i in range(10):
     print(a, end=" ")
     a,b = b, a+b 
 
+def fib(n):
+    if n == 0:
+        return 0
+    elif n <= 2:
+        return 1
+    else:
+        return fib(n-1)+fib(n-2)
+print()
+for i in range(10):
+    print(fib(i), end=' ')

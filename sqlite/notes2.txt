@@ -11,7 +11,9 @@ CREATE TABLE employee(
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     name TEXT, 
     age INTEGER, 
-    salary INTEGER
+    salary INTEGER,
+    department_id INTEGER,
+    FOREIGN KEY(department_id) REFERENCES department(id)
 );
 
 ## 4. Create Another Table Called `department`
@@ -21,17 +23,17 @@ CREATE TABLE department(
     location TEXT
 );
 
-## 5. Insert Data into the `employee` Table
-INSERT INTO employee(name, age, salary) VALUES ('amit', 29, 55000);
-INSERT INTO employee(name, age, salary) VALUES ('sunil', 32, 62000);
-INSERT INTO employee(name, age, salary) VALUES ('rajeev', 34, 67000);
-INSERT INTO employee(name, age, salary) VALUES ('pooja', 32, 61000);
-INSERT INTO employee(name, age, salary) VALUES ('namita', 34, 71000);
-
-## 6. Insert Data into the `department` Table
+## 5. Insert Data into the `department` Table
 INSERT INTO department(name, location) VALUES ('HR', 'Delhi');
 INSERT INTO department(name, location) VALUES ('Finance', 'Mumbai');
 INSERT INTO department(name, location) VALUES ('Engineering', 'Bangalore');
+
+## 6. Insert Data into the `employee` Table
+INSERT INTO employee(name, age, salary, department_id) VALUES ('amit', 29, 55000, 1);
+INSERT INTO employee(name, age, salary, department_id) VALUES ('sunil', 32, 62000, 2);
+INSERT INTO employee(name, age, salary, department_id) VALUES ('rajeev', 34, 67000, 3);
+INSERT INTO employee(name, age, salary, department_id) VALUES ('pooja', 32, 61000, 1);
+INSERT INTO employee(name, age, salary, department_id) VALUES ('namita', 34, 71000, 2);
 
 ## 7. Update Data in the `employee` Table
 -- Example: Update the salary of employee 'amit' to 60000
@@ -110,7 +112,9 @@ CREATE TABLE employee (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     age INTEGER,
-    salary INTEGER
+    salary INTEGER,
+    department_id INTEGER,
+    FOREIGN KEY(department_id) REFERENCES department(id)
 );
 
 # Create an Index
@@ -118,3 +122,46 @@ CREATE INDEX idx_employee_name ON employee(name);
 
 # Closing the SQLite Database
 .quit
+
+
+
+
+INNER JOIN
+Purpose: Selects records that have matching values in both tables. Syntax:
+SELECT columns
+FROM table1
+INNER JOIN table2
+ON table1.column = table2.column;
+
+SELECT e.name, e.age, d.name AS department
+FROM employee e
+INNER JOIN department d ON e.department_id = d.id;
+
+Result: Returns only the rows where there is a match in both tables.
+
+LEFT JOIN (or LEFT OUTER JOIN)
+Purpose: Returns all records from the left table, and the matched records from the right table. 
+If no match, the result is NULL from the right table. Syntax:
+SELECT e.name, e.age, d.name AS department
+FROM employee e
+LEFT JOIN department d ON e.department_id = d.id;
+
+Result: Returns all rows from the left table (employee), and matched rows from the right table (department). 
+For unmatched rows, NULL values are included for columns from the right table.
+
+RIGHT JOIN (or RIGHT OUTER JOIN)
+Purpose: Returns all records from the right table, and the matched records from the left table. 
+If no match, the result is NULL from the left table. Syntax:
+
+SELECT e.name, e.age, d.name AS department
+FROM employee e
+RIGHT JOIN department d ON e.department_id = d.id;
+Result: Returns all rows from the right table (department), and matched rows from the left table (employee).  
+For unmatched rows, NULL values are included for columns from the left table
+
+
+Summary Table:
+Join Type	Included Rows
+INNER	Only rows with matching values in both tables
+LEFT	All rows from the left table, matched rows from the right table, NULL if not matched
+RIGHT	All rows from the right table, matched rows from the left table, NULL if not

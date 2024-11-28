@@ -1,0 +1,72 @@
+
+select distinct last_name from actor;
+select last_name from actor here last_name='Zellweger';
+select count(last_name) from actor group by last_name;
+select last_name,count(last_name) from actor group by last_name order by last_name desc;
+select last_name, count(last_name) as lname from actor group by last_name order by lname desc;
+select * from actor where first_name='Penelope';
+
+
+practice questions:
+
+1.Query the actor table and count how many actors are there.
+2.query the actor table and count how many distinct first_name are there.
+3.query the actor table and count how many distinct last_name_name are there.
+4.find which first_name and last_name is most used in data.
+5.group the data by first_name.
+6.group the data by first_name.
+7.group the data by first_name and order in desc order.
+8.find all the actors detail whose first_name is 'Penelope'.
+9.find all the actors detail whose first_name is 'Penelope' order them by last_name.
+
+group by film
+1.group the film data on rental_duration.
+2.display all the rating of film.
+
+select rating from film group by rating ;
+select rating, count(rating) from film group by rating ;
+
+3.find title from film whose replacement_cost is more than 20.
+4.find title from film whose rental_rate is more than 4.
+5.find title whose replacement_cost is more than 20 and rental_rate is more than 4 and raing='R'.
+6.count how many such title are there.
+7.how many customer have first_name='Terry'.
+8.order the customer by store_id, first_name.
+9.find 10 first paid customer from payment.
+10.find 5 short movie name.
+
+BETWEEn
+11.select date where amount from payment is done between 11 to 12 dollar.
+12.select amount where date between '2007-02-15' and '2007-02-16 'from payment 
+
+IN
+13. select title,rating from film where rating in ('R', 'G');
+
+LIKE and ILIKE 
+ILIKE: not case sensitive
+LIKE is case sensitive
+
+select title,rating from film where title ilike 'sn%'
+
+WILDCARD(underscore)--single character
+select title,rating from film where title like '_en%'
+select * from film where title like 'S%' and title like '%s' 
+select * from film where title like 'S%s' 
+
+select * from film where title like '_er%';
+
+AGGREGATE FUNCTION
+AVG(), COUNT(), MAX(),MIN(), SUM()
+
+select ROUND(AVG(amount),2) from payment;
+select MAX(amount) as max_amt,MIN(amount) as min_amt,AVG(amount) as avg_amt from payment;
+
+group by customer_id on payment
+select customer_id, sum(amount) as total from payment
+group by customer_id;
+
+select customer_id, count(amount) as total from payment
+group by customer_id order by total desc;
+
+select customer_id,staff_id, sum(amount) as total from payment
+group by customer_id,staff_id 
