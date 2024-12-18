@@ -1,0 +1,81 @@
+# SQLite Database and Table Management
+
+## 1. Navigate to SQLite Folder Path
+   cd path_to_sqlite_folder
+
+## 2. Create a Database Called `office`
+   sqlite3 office.db
+
+## 3. Create a Table Called `employee` in the Database
+   CREATE TABLE employee(
+       id INTEGER PRIMARY KEY AUTOINCREMENT, 
+       name TEXT, 
+       age INTEGER, 
+       salary INTEGER
+   );
+
+## 4. Create Another Table Called `department`
+   CREATE TABLE department(
+       id INTEGER PRIMARY KEY AUTOINCREMENT, 
+       name TEXT, 
+       location TEXT
+   );
+
+## 5. Insert Data into the `employee` Table
+   INSERT INTO employee(name, age, salary) VALUES ('amit', 29, 55000);
+   INSERT INTO employee(name, age, salary) VALUES ('sunil', 32, 62000);
+   INSERT INTO employee(name, age, salary) VALUES ('rajeev', 34, 67000);
+   INSERT INTO employee(name, age, salary) VALUES ('pooja', 32, 61000);
+   INSERT INTO employee(name, age, salary) VALUES ('namita', 34, 71000);
+
+## 6. Insert Data into the `department` Table
+   INSERT INTO department(name, location) VALUES ('HR', 'Delhi');
+   INSERT INTO department(name, location) VALUES ('Finance', 'Mumbai');
+   INSERT INTO department(name, location) VALUES ('Engineering', 'Bangalore');
+
+## 7. Update Data in the `employee` Table
+   -- Example: Update the salary of employee 'amit' to 60000
+   UPDATE employee SET salary = 60000 WHERE name = 'amit';
+
+## 8. Delete Data from the `employee` Table
+   -- Example: Delete the record of employee 'sunil'
+   DELETE FROM employee WHERE name = 'sunil';
+
+# Additional Basic SQLite Commands
+
+## View All Records in the `employee` Table
+   SELECT * FROM employee;
+
+## View Specific Columns
+   SELECT name, salary FROM employee;
+
+## Count the Number of Employees
+   SELECT COUNT(*) FROM employee;
+
+## Order Records by Salary
+   SELECT * FROM employee ORDER BY salary DESC;
+
+## Filter Records by Condition
+   SELECT * FROM employee WHERE age > 30;
+
+# SQL Join Commands
+
+## Inner Join `employee` and `department` Tables
+   SELECT e.name, e.age, e.salary, d.name AS department, d.location
+   FROM employee e
+   INNER JOIN department d ON e.department_id = d.id;
+
+## Left Join `employee` and `department` Tables
+   SELECT e.name, e.age, e.salary, d.name AS department, d.location
+   FROM employee e
+   LEFT JOIN department d ON e.department_id = d.id;
+
+## Right Join `employee` and `department` Tables
+   -- SQLite doesn't support RIGHT JOIN, but we can simulate it using LEFT JOIN
+   SELECT e.name, e.age, e.salary, d.name AS department, d.location
+   FROM department d
+   LEFT JOIN employee e ON e.department_id = d.id
+   WHERE e.id IS NULL;
+
+# Closing the SQLite Database
+   .quit

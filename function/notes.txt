@@ -1,0 +1,7 @@
+
+
+Technically, every function in Python returns a value whether you use return or not. If
+a function does not return a value, by default, it returns a special value None. For this
+reason, a function that does not return a value is also called a None function. The None
+value can be assigned to a variable to indicate that the variable does not reference any
+object.

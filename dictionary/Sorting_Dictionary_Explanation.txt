@@ -1,0 +1,57 @@
+
+Sorting a Dictionary by Values, Then by Keys in Python
+
+To sort a dictionary by its values (and by keys as a secondary criterion), you can use the sorted() function with a lambda function. This technique is useful when you want to order dictionary items by their values and handle any ties by further sorting alphabetically by the keys.
+
+Step-by-Step Breakdown
+
+Given a dictionary math_dict with structure {'key': 'value'}:
+
+1. Convert the Dictionary to Items (Tuples):
+   Using math_dict.items() provides a view of the dictionary's (key, value) pairs as a list of tuples:
+   [('Bhuvanesh', '68'), ('Harish', '62'), ('Shashank', '57'), ('Rida', '42'), ('Ritika', '87')]
+
+2. Sort with a Lambda Key:
+   Apply sorted() with a custom key argument to determine the sorting order:
+   sorted(math_dict.items(), key=lambda item: (item[1], item[0]))
+   
+   Here, lambda item: (item[1], item[0]):
+      - Takes each tuple item (where item[0] is the key, and item[1] is the value).
+      - Returns (item[1], item[0]), effectively swapping the order for sorting purposes.
+
+3. Sorting Mechanism:
+   - Primary Sorting: The function sorts tuples by item[1] (the value).
+   - Secondary Sorting: If two values are the same, it sorts further by item[0] (the key), maintaining alphabetical order for tied values.
+
+Example
+
+For math_dict:
+math_dict = {
+    'Bhuvanesh': '68',
+    'Harish': '62',
+    'Shashank': '57',
+    'Rida': '42',
+    'Ritika': '87'
+}
+
+After applying sorted(math_dict.items(), key=lambda item: (item[1], item[0])), the output list is:
+[('Rida', '42'), ('Shashank', '57'), ('Harish', '62'), ('Bhuvanesh', '68'), ('Ritika', '87')]
+
+Converting Back to a Dictionary
+
+To convert the sorted list of tuples back into a dictionary, wrap the result in dict():
+sorted_dict = dict(sorted(math_dict.items(), key=lambda item: (item[1], item[0])))
+
+Result:
+{
+    'Rida': '42',
+    'Shashank': '57',
+    'Harish': '62',
+    'Bhuvanesh': '68',
+    'Ritika': '87'
+}
+
+Summary
+
+- The sorted() function with key=lambda item: (item[1], item[0]) allows sorting by values primarily and keys secondarily.
+- The final result is a dictionary sorted by values in ascending order, with ties broken by alphabetical order of the keys.

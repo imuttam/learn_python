@@ -1,0 +1,19 @@
+from faker import Faker
+fake = Faker()
+
+fake.name()
+
+Locale en_IN
+
+fake.address()
+fake.building_number()
+fake.city()
+fake.country()
+fake.postcode()
+fake.street_address()
+fake.street_name()
+fake.company()
+fake.date()
+fake.msisdn()
+fake.name()
+fake.email()

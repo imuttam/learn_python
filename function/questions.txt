@@ -1,0 +1,5 @@
+1.write a function that takes the lengths of the two shorter sides of a right triangle as its parameters.
+  Return the hypotenuse of the triangle, computed using Pythagorean theorem, as the function’s result.
+2. write a function that takes a number as parameter and display first prime number after that.
+3. write a function that takes a string as parameter and check weather it is palindrome.
+4. write a function that takes a number as parameter and generate a password of that length.

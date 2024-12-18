@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block content %}
+  <h2 class="text-center">Daily Report </h2><hr>
+  <div class="row justify-content-center">
+
+
+      {% for row in report %}
+
+      <div class="col-sm-4"> <!-- not "col-sm-3" -->
+        <div class="card mt-3">
+          <div class="card-body text-center">
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item bg-dark text-light">DATE: {{ row.date }}</li>
+              <li class="list-group-item bg-warning text-light">2G VOICE: {{ row.voice_2G }}</li>
+              <li class="list-group-item bg-info text-light">3G VOICE: {{ row.voice_3G }}</li>
+              <li class="list-group-item bg-danger text-light">4G VOICE: {{ row.volte }}</li>
+              <li class="list-group-item bg-primary text-light">VLRCOUNT: {{ row.vlrcount }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+
+{% endblock %}
+
+
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Featured
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+

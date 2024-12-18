@@ -1,0 +1,212 @@
+
+select distinct last_name from actor;
+select last_name from actor here last_name='Zellweger';
+select count(last_name) from actor group by last_name;
+select last_name,count(last_name) from actor group by last_name order by last_name desc;
+select last_name, count(last_name) as lname from actor group by last_name order by lname desc;
+select * from actor where first_name='Penelope';
+
+
+practice questions:
+
+1.Query the actor table and count how many actors are there.
+2.query the actor table and count how many distinct first_name are there.
+3.query the actor table and count how many distinct last_name_name are there.
+4.find which first_name and last_name is most used in data.
+5.group the data by first_name.
+6.group the data by first_name.
+7.group the data by first_name and order in desc order.
+8.find all the actors detail whose first_name is 'Penelope'.
+9.find all the actors detail whose first_name is 'Penelope' order them by last_name.
+
+group by film
+1.group the film data on rental_duration.
+2.display all the rating of film.
+
+select rating from film group by rating ;
+select rating, count(rating) from film group by rating ;
+
+3.find title from film whose replacement_cost is more than 20.
+4.find title from film whose rental_rate is more than 4.
+5.find title whose replacement_cost is more than 20 and rental_rate is more than 4 and raing='R'.
+6.count how many such title are there.
+7.how many customer have first_name='Terry'.
+8.order the customer by store_id, first_name.
+9.find 10 first paid customer from payment.
+10.find 5 short movie name.
+
+BETWEEn
+11.select date where amount from payment is done between 11 to 12 dollar.
+12.select amount where date between '2007-02-15' and '2007-02-16 'from payment 
+
+IN
+13. select title,rating from film where rating in ('R', 'G');
+
+LIKE and ILIKE 
+ILIKE: not case sensitive
+LIKE is case sensitive
+
+select title,rating from film where title ilike 'sn%'
+
+WILDCARD(underscore)--single character
+select title,rating from film where title like '_en%'
+select * from film where title like 'S%' and title like '%s' 
+select * from film where title like 'S%s' 
+
+select * from film where title like '_er%';
+
+AGGREGATE FUNCTION
+AVG(), COUNT(), MAX(),MIN(), SUM()
+
+select ROUND(AVG(amount),2) from payment;
+select MAX(amount) as max_amt,MIN(amount) as min_amt,AVG(amount) as avg_amt from payment;
+
+#########################
+GROUP BY
+##########################
+
+Q:Count movies in each rating.
+select rating, count(*) from film
+group by rating;
+
+Q:get date wise payment count
+select date(payment_date), count(*) from payment
+group by date(payment_date);
+
+Q: get date wise total payment amount.
+select date(payment_date), sum(amount) from payment
+group by date(payment_date);
+
+Q:get month wise sum amount.
+select extract(month from payment_date), sum(amount) from payment
+group by extract(month from payment_date);
+
+select extract(day from payment_date), sum(amount) from payment
+group by extract(day from payment_date);
+
+Q: From which dstrict most address belongs?
+select district, count(district) from address
+group by district;
+
+
+group by customer_id on payment
+select customer_id, sum(amount) as total from payment
+group by customer_id;
+
+select customer_id, count(amount) as total from payment
+group by customer_id order by total desc;
+
+select customer_id,staff_id, sum(amount) as total from payment
+group by customer_id,staff_id 
+
+select DATE(payment_date),sum(amount) as total from payment
+group by DATE(payment_date);
+
+Question: which date maximum payment amount was done
+select DATE(payment_date),sum(amount) as total from payment
+group by DATE(payment_date) order by total desc;
+
+Q: which staff has received most payment?
+select staff_id, count(amount) as total from payment
+group by staff_id order by total desc;
+
+Q:What is average replacement cost rating wise?
+select rating, avg(replacement_cost) as rcost from film
+group by rating 
+
+Q:Top 5 customer_id who spend much(payment)
+select customer_id, sum(amount) as total from payment
+group by customer_id order by total desc;
+
+Q:Top 5 customer who spend much(payment, customer)
+select c.first_name, sum(p.amount) as total from payment p
+inner join customer c on c.customer_id=p.customer_id
+group by c.first_name order by total desc ;
+
+Q:Display movie as per genre/category wise.
+select f.title,c.name as genre from film f
+inner join film_category fc on fc.film_id=f.film_id
+inner join category c on c.category_id=fc.category_id;
+
+Q:display movie group by category.
+
+select c.name,count(c.name) as genre from film f
+inner join film_category fc on fc.film_id=f.film_id
+inner join category c on c.category_id=fc.category_id
+group by c.name order by genre desc;
+
+Q:Top 10 most used district in address.
+select district, count(district) as cdist from address
+group by district order by cdist desc ;
+
+HAVING 
+select district, count(district) as cdist from address
+group by district having count(district) > 5;
+
+select customer_id, count(*) from payment
+group by customer_id 
+having count(*) >= 40;
+
+1. Return the customer IDs of customers who have spent at least $110 with the staff member who has an ID of 2.
+select customer_id, sum(amount) from payment
+where staff_id=2
+group by customer_id 
+having sum(amount) >= 110;
+
+Q:2. How many films begin with the letter J?
+select count(*) from film
+where title like 'J%';
+
+Q:What customer has the highest customer ID number whose name starts with an 'E' and has an address ID lower than 500?
+select customer_id,first_name, last_name from customer
+where first_name like 'E%' and address_id < 500
+order by customer_id desc limit 1;
+
+*******************************************************************************************
+JOIN TABLE USING WHERE   
+*******************************************************************************************
+
+select title,first_name from film f, film_actor fa,actor a
+where f.film_id=fa.film_id and a.actor_id=fa.actor_id;
+
+select first_name,count(*) total from film f, film_actor fa,actor a
+where f.film_id=fa.film_id and a.actor_id=fa.actor_id
+group by first_name
+order by total desc;
+
+*******************************************************************************************
+JOIN TABLE USING INNER JOIN   
+*******************************************************************************************
+
+select first_name,count(*) as total from film f 
+inner join film_actor fa on f.film_id=fa.film_id 
+inner join actor a on  a.actor_id=fa.actor_id
+group by first_name
+order by total desc;
+
+Key Differences and Best Practice:
+
+Readability: The explicit join syntax is generally more readable and easier to understand, especially for complex queries with multiple joins. It makes the relationships between tables clearer.
+
+Maintainability: Explicit joins are easier to maintain and modify. If you need to change the join conditions or add more joins, it's simpler to do so with the explicit syntax.
+
+Performance: There is usually no significant difference in performance between implicit and explicit joins, as modern SQL query optimizers handle both similarly. However, explicit joins can sometimes be more efficiently optimized by the database engine.
+
+Recommendation: It is generally recommended to use the explicit join syntax (INNER JOIN). It is clearer, more readable, and easier to maintain. Plus, it helps prevent errors related to forgotten join conditions. So, the second query would be the better choice.
+
+Feel free to ask if you have more questions or need further clarification!
+
+
+
+select a.district,c.email from address a
+left join customer c
+on c.address_id=a.address_id
+where a.district='California';
+
+
+select a.first_name,a.last_name, f.title
+from actor a inner join film_actor fa on
+fa.actor_id=a.actor_id
+inner join film f  on
+fa.film_id=f.film_id
+where a.first_name='Nick' and a.last_name='Wahlberg';
