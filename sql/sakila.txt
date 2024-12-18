@@ -61,6 +61,7 @@ AVG(), COUNT(), MAX(),MIN(), SUM()
 select ROUND(AVG(amount),2) from payment;
 select MAX(amount) as max_amt,MIN(amount) as min_amt,AVG(amount) as avg_amt from payment;
 
+<<<<<<< HEAD
 #########################
 GROUP BY
 ##########################
@@ -89,6 +90,8 @@ select district, count(district) from address
 group by district;
 
 
+=======
+>>>>>>> 3d28ab20d5e1ab341a4cb6bbf81c3258d0433d13
 group by customer_id on payment
 select customer_id, sum(amount) as total from payment
 group by customer_id;
@@ -97,6 +100,7 @@ select customer_id, count(amount) as total from payment
 group by customer_id order by total desc;
 
 select customer_id,staff_id, sum(amount) as total from payment
+<<<<<<< HEAD
 group by customer_id,staff_id 
 
 select DATE(payment_date),sum(amount) as total from payment
@@ -210,3 +214,6 @@ fa.actor_id=a.actor_id
 inner join film f  on
 fa.film_id=f.film_id
 where a.first_name='Nick' and a.last_name='Wahlberg';
+=======
+group by customer_id,staff_id 
+>>>>>>> 3d28ab20d5e1ab341a4cb6bbf81c3258d0433d13

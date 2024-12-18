@@ -1,4 +1,9 @@
 env/
+<<<<<<< HEAD
 .venv/
 data_set/
 access.log
+=======
+access.log
+>>>>>>> 3d28ab20d5e1ab341a4cb6bbf81c3258d0433d13
+sql/
