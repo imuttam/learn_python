@@ -1,13 +1,14 @@
 import psycopg2
 from faker import Faker
 import random
+from login import password
 
 # Initialize Faker for generating fake data
 fakes = Faker('en_IN')
 
 # Database connection parameters
 db_user = "postgres"
-db_password = "Cell0ne"  # Replace with your actual password
+db_password = password()  # Replace with your actual password
 db_host = "localhost"  # or your database host
 db_port = "5432"       # default PostgreSQL port
 db_name = "ems"
@@ -77,5 +78,4 @@ def show_data():
 
 rows = show_data()
 for row in rows:
-    d = row[-2]
-    print(d)
+    print(row)
