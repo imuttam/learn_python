@@ -2,6 +2,7 @@ env/
 .venv/
 data_set/
 access.log
-postgres_connect/config
+postgres_connect/config.py
+postgres_ems/login.py
 
 
