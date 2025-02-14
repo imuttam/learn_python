@@ -1,5 +1,6 @@
 import psycopg2
 import config
+from datetime import datetime
 
 conn = psycopg2.connect(
                     dbname=config.db_name, 
@@ -15,4 +16,10 @@ cur = conn.cursor()
 cur.execute(query)
 rows = cur.fetchall()
 for row in rows:
-    print(row)
+    print(row[0],row[1],row[2],row[3].strftime('%d-%m-%Y'))
+
+column_names = [desc[0] for desc in cur.description]
+print("Column names:", column_names)
+
+cur.close()
+conn.close()
